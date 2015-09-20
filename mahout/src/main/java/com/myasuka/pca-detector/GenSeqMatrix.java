@@ -1,4 +1,4 @@
-package com.myasuka;
+package com.myasuka.pca-detector;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;

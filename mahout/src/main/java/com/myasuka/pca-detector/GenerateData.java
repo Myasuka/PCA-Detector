@@ -1,4 +1,4 @@
-package com.myasuka;
+package com.myasuka.pca-detector;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
