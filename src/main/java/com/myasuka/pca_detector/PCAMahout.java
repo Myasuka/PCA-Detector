@@ -16,9 +16,16 @@ import org.apache.mahout.math.hadoop.stochasticsvd.SSVDCli;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Implementation of shilling detection algorithm in collaborative filtering, based on Mahout.
+ * 1. use `GenerateData` class on ml-10M data to insert spam user data, and upload to HDFS
+ * 2. convert data in HDFS from original text format to sequence file format as next step's input
+ * 3. use SVD method in mahout to get U and sigma matrix
+ * 4. compute the distance of the contribution with the corresponding 'user' id and return the suspected users
+ */
 public class PCAMahout {
     public static void main(String[] args) throws Exception {
-        if (args.length < 2) {
+        if (args.length < 3) {
             System.err.println("USAGE: com.myasuka.pca_detector.PCAMahout <training data set> <output path> <suspected ratio>");
             System.exit(-1);
         }
