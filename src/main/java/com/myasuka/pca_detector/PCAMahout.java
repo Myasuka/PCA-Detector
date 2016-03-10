@@ -1,4 +1,4 @@
-package com.myasuka.pca-detector;
+package com.myasuka.pca_detector;
 
 
 import org.apache.hadoop.conf.Configuration;
@@ -113,8 +113,8 @@ public class PCAMahout {
             double rate = Double.parseDouble(info[2]);
             if (movieRateMap.containsKey(movieId)) {
                 Pair pair = movieRateMap.get(movieId);
-                double v = rate + (double) pair.getFirst();
-                int count = (int) pair.getSecond() + 1;
+                double v = rate + (Double) pair.getFirst();
+                int count = (Integer) pair.getSecond() + 1;
                 Pair<Double, Integer> pairVal = new Pair<Double, Integer>(v, count);
                 movieRateMap.put(movieId, pairVal);
             } else {
@@ -149,7 +149,7 @@ public class PCAMahout {
         while (movieIdIterator.hasNext()) {
             Map.Entry<Integer, Pair> entry = movieIdIterator.next();
             movie2ColIndexWriter.write(entry.getKey() + "," + movieIndex + "\n");
-            double rate = (double) entry.getValue().getFirst() / (int) entry.getValue().getSecond();
+            double rate = (Double) entry.getValue().getFirst() / (Integer) entry.getValue().getSecond();
             movieAverageRateWriter.write(entry.getKey() + "," + rate + "\n");
             movieIndex++;
         }

@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.myasuka.pca-detector</groupId>
-    <artifactId>pca-detector-parent</artifactId>
+    <artifactId>pca_detector</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>PCA-Detector Parent POM</name>
     <licenses>
         <license>
@@ -24,11 +24,11 @@
             <url>https://github.com/Myasuka</url>
         </developer>
     </developers>
-    <modules>
-        <module>mahout</module>
+    <!--<modules>-->
+        <!--<module>mahout</module>-->
         <!--<module>spark</module>-->
         <!--<module>breeze</module>-->
-    </modules>
+    <!--</modules>-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -123,10 +123,14 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>2.0.2</version>
                 </plugin>
-
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.5</version>
+            </plugin>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
@@ -197,34 +201,7 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest-maven-plugin</artifactId>
-                <version>1.0</version>
-                <configuration>
-                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-                    <junitxml>.</junitxml>
-                    <filereports>${project.build.directory}/ToonaTestSuite.txt</filereports>
-                    <argLine>-Xmx3g -XX:MaxPermSize=${MaxPermGen} -XX:ReservedCodeCacheSize=512m</argLine>
-                    <systemProperties>
-                        <marlin.test.home>${session.executionRootDirectory}</marlin.test.home>
-                        <java.awt.headless>true</java.awt.headless>
-                        <spark.test.home>${marlin.test.home}</spark.test.home>
-                        <spark.testing>1</spark.testing>
-                        <spark.ui.enabled>false</spark.ui.enabled>
-                        <spark.ui.showConsoleProgress>false</spark.ui.showConsoleProgress>
-                        <spark.driver.allowMultipleContexts>true</spark.driver.allowMultipleContexts>
-                    </systemProperties>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
 
         </plugins>
     </build>
