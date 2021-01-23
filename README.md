@@ -1,4 +1,4 @@
-# PCA_Detector
+# PCA-Detector
 Implementaions of shilling detection algorithm in collaborative filtering, based on breeze, Mahout and Spark respectively
 
 Algorithm adapted in this project comes from paper [Mehta. 2009](http://rd.springer.com/article/10.1007%2Fs11257-008-9050-4), 
